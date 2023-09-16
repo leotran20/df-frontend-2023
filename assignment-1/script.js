@@ -1,6 +1,5 @@
 // Your JS code goes here
 const dataKey = 'books';
-const filteredDataKey = 'filteredBooks';
 $(document).ready(function () {
     fetchList();
     $('#searchBox').keyup(function () {
@@ -28,7 +27,8 @@ function closeModal() {
 
 function fetchList() {
     // remove old items except headers
-    $('table.main-content tbody').children().not(':first').remove();
+    const tableBodySelector =  $('table.main-content tbody');
+    tableBodySelector.children().not(':first').remove();
 
 
     const bookList = localStorage.getItem(dataKey);
@@ -36,7 +36,7 @@ function fetchList() {
         localStorage.setItem(dataKey, '[]');
     } else {
         const query = $('#searchBox').val();
-        const rows = JSON.parse(bookList).filter(i => i.name.includes(query)).map(i => `
+        const rows = JSON.parse(bookList).filter(i => i.name.toLowerCase().includes(query.toLowerCase())).map(i => `
       <tr>
           <td colspan="2">${i.name}</td>
           <td>${i.author}</td>
@@ -45,7 +45,7 @@ function fetchList() {
               <button class="btn btn-link" type="button" onclick="openConfirmationDialog({name: '${i.name}', id: '${i.id}'})"><span>Delete</span></button>
           </td>
       </tr>`);
-        $('table.main-content tbody').append(rows);
+        tableBodySelector.append(rows);
     }
 }
 
