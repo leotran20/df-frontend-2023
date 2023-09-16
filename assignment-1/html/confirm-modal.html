@@ -1,0 +1,15 @@
+<div id="confirm-dialog" class="modal">
+    <div class="content">
+        <button class="close-btn" type="button" onclick="closeModal()">
+<span class="material-symbols-outlined">
+close
+</span>
+        </button>
+        <h2>Delete Book</h2>
+        <p>Do you want to delete <b>{TITLE}</b> book?</p>
+        <div class="button-group">
+            <button type="button" class="btn btn-secondary" onclick="deleteBook({ID})">Delete</button>
+            <button type="button" class="btn btn-primary" onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>
