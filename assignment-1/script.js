@@ -1,41 +1,39 @@
 // Your JS code goes here
 const dataKey = 'books';
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
     fetchList();
-    $('#searchBox').keyup(function () {
-        fetchList();
-    });
+    document.getElementById('searchBox').addEventListener('keyup', () => fetchList());
 });
 
 function openConfirmationDialog(item) {
-    $.get('/html/confirm-modal.html', function (data) {
-        data = data.replace('/{TITLE}/g', item.name);
-        data = data.replace('/{ID}/g', item.id);
-        $('body').append(data);
+    fetch('/html/confirm-modal.html').then(response => response.text()).then(data => {
+        data = data.replace('{TITLE}', item.name);
+        data = data.replace('{ID}', item.id);
+        document.body.insertAdjacentHTML('beforeend', data);
     });
 }
 
 function openAddDialog() {
-    $.get('/html/add-modal.html', function (data) {
-        $('body').append(data);
+    fetch('/html/add-modal.html').then(response => response.text()).then(data => {
+        document.body.insertAdjacentHTML('beforeend', data);
     });
 }
 
 function closeModal() {
-    $('.modal').remove();
+    document.querySelector('.modal').remove();
 }
 
 function fetchList() {
     // remove old items except headers
-    const tableBodySelector =  $('table.main-content tbody');
-    tableBodySelector.children().not(':first').remove();
+    const tableBodySelector = document.querySelector('table.main-content tbody');
+    tableBodySelector.querySelectorAll('tr:not(:first-child)').forEach(e => e.remove());
 
 
     const bookList = localStorage.getItem(dataKey);
     if (!bookList) {
         localStorage.setItem(dataKey, '[]');
     } else {
-        const query = $('#searchBox').val();
+        const query = document.getElementById('searchBox').value;
         const rows = JSON.parse(bookList).filter(i => i.name.toLowerCase().includes(query.toLowerCase())).map(i => `
       <tr>
           <td colspan="2">${i.name}</td>
@@ -44,14 +42,21 @@ function fetchList() {
           <td>
               <button class="btn btn-link" type="button" onclick="openConfirmationDialog({name: '${i.name}', id: '${i.id}'})"><span>Delete</span></button>
           </td>
-      </tr>`);
-        tableBodySelector.append(rows);
+      </tr>`).join('');
+        tableBodySelector.insertAdjacentHTML('beforeend', rows);
     }
 }
 
 function createNewBook() {
     // Get all the forms elements and their values in one step
-    const values = $('#addNewForm').serializeArray();
+    const addNewForm = document.querySelector('#addNewForm');
+
+    const formData = new FormData(addNewForm);
+
+    const values = [];
+    formData.forEach(function (value, key) {
+        values.push({name: key, value: value});
+    });
 
     const newItem = values.reduce((result, currentValue) => {
         result[currentValue.name] = currentValue.value;
@@ -85,3 +90,4 @@ function deleteBook(id) {
 
     closeModal();
 }
+
