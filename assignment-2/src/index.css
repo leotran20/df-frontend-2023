@@ -1,13 +1,183 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  height: 100%;
+  width: 100%;
+  background: #f7f9fa;
+  color: #2b3844;
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  background-color: #fffffe;
+  border-bottom: 1px solid #c4cfd8;
+  box-shadow: 1px 2px #e5e9ed;
+  padding: .5rem 1rem;
+  margin-bottom: .5rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+table, th, td {
+  border: 1px solid #d0d9e2;
+  border-collapse: collapse;
+}
+
+th, td {
+  background-color: #fefefe;
+  padding: .3rem .8rem;
+  height: 43px;
+}
+
+input, select {
+  padding: .5rem;
+  border: 1px solid #d1d9df;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.btn {
+  padding: .7rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #d3455b;
+  color: #faecee;
+}
+
+.btn-secondary {
+  background-color: transparent;
+}
+
+.btn-link {
+  background-color: transparent;
+}
+
+.btn-link span {
+  color: #d3455b;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  border: none;
+  padding: 0 .2rem;
+}
+
+.btn-link:hover span {
+  border-bottom: 1px solid #d3455b;
+}
+
+.brand-name {
+  align-self: center;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.container {
+  padding: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal .content {
+  background-color: #fefefe;
+  width: 25%;
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #c4cfd8;
+}
+
+.modal .content .close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: .5rem;
+  padding: 0.1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.modal .content h3, .modal .content p {
+  text-align: center;
+}
+
+.modal .button-group {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.modal .button-group .btn {
+  min-width: 90px;
+}
+
+#confirm-dialog .content {
+  padding: 1rem 3rem;
+  gap: 1rem
+}
+
+#confirm-dialog .button-group {
+  justify-content: center;
+}
+
+#add-modal .content {
+  align-items: flex-start;
+}
+
+#add-modal form, #add-modal input, #add-modal select {
+  width: 100%;
+}
+
+#add-modal form {
+  margin-top: 2rem;
+}
+
+#add-modal label {
+  font-weight: 600;
+}
+
+#add-modal .button-group {
+  justify-content: flex-end;
 }
