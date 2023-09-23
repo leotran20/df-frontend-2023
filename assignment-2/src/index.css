@@ -1,3 +1,5 @@
+@import "variables.css";
+
 * {
   box-sizing: border-box;
 }
@@ -5,13 +7,13 @@
 html {
   height: 100%;
   width: 100%;
-  background: #f7f9fa;
-  color: #2b3844;
   font-family: sans-serif;
 }
 
 body {
   margin: 0;
+  background: var(--secondary-color-3);
+  color: var(--black-color);
 }
 
 header {
@@ -19,9 +21,9 @@ header {
   flex-direction: row;
   align-content: center;
   justify-content: space-between;
-  background-color: #fffffe;
-  border-bottom: 1px solid #c4cfd8;
-  box-shadow: 1px 2px #e5e9ed;
+  background-color: var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color-2);
+  box-shadow: 1px 2px var(--secondary-color-4);
   padding: .5rem 1rem;
   margin-bottom: .5rem;
 }
@@ -37,12 +39,12 @@ h2 {
 }
 
 table, th, td {
-  border: 1px solid #d0d9e2;
+  border: 1px solid var(--secondary-color-1);
   border-collapse: collapse;
 }
 
 th, td {
-  background-color: #fefefe;
+  background-color: var(--secondary-color);
   padding: .3rem .8rem;
   height: 43px;
 }
@@ -54,6 +56,8 @@ input, select {
   outline: none;
   font-size: 1rem;
   line-height: 1;
+  background-color: var(--secondary-color);
+  color: var(--black-color);
 }
 
 .btn {
@@ -65,7 +69,7 @@ input, select {
 }
 
 .btn-primary {
-  background-color: #d3455b;
+  background-color: var(--primary-color);
   color: #faecee;
 }
 
@@ -78,7 +82,7 @@ input, select {
 }
 
 .btn-link span {
-  color: #d3455b;
+  color: var(--primary-color);
   font-size: 0.9rem;
   text-align: center;
   width: 100%;
@@ -87,7 +91,7 @@ input, select {
 }
 
 .btn-link:hover span {
-  border-bottom: 1px solid #d3455b;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .brand-name {
@@ -117,7 +121,7 @@ input, select {
 }
 
 .modal .content {
-  background-color: #fefefe;
+  background-color: var(--secondary-color);
   width: 25%;
   position: relative;
   padding: 1rem;
@@ -125,7 +129,7 @@ input, select {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid #c4cfd8;
+  border: 1px solid var(--secondary-color-2);
 }
 
 .modal .content .close-btn {

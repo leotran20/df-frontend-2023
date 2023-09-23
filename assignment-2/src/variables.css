@@ -1,0 +1,21 @@
+:root {
+    --primary-color: #d3455b;
+    --secondary-color: #fefefe;
+    --secondary-color-1: #d0d9e2;
+    --secondary-color-2: #c4cfd8;
+    --secondary-color-3: #f7f9fa;
+    --secondary-color-4: #e5e9ed;
+    --secondary-color-5: #e3e7ec;
+    --black-color: #2b3844;
+}
+
+body.dark {
+    --primary-color: #d3455b;
+    --secondary-color: #2b3844;
+    --secondary-color-1: #49545b; /* Darker shade */
+    --secondary-color-2: #3b454f; /* Darker shade */
+    --secondary-color-3: #1c1c1e; /* Background or text color for dark mode */
+    --secondary-color-4: #313b41; /* Darker shade */
+    --secondary-color-5: #b0b6c2;
+    --black-color: #fefefe;
+}
