@@ -3,9 +3,7 @@ const ConfirmDialog = ({close, item, deleteItem}) => {
         <div id="confirm-dialog" className="modal">
             <div className="content">
                 <button className="close-btn" type="button" onClick={close}>
-<span className="material-symbols-outlined">
-close
-</span>
+                    <span className="material-symbols-outlined">close</span>
                 </button>
                 <h2>Delete Book</h2>
                 <p>Do you want to delete <b>{item.name}</b> book?</p>

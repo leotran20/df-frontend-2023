@@ -18,9 +18,7 @@ const AddDialog = ({close, addItem}) => {
         <div id="add-modal" className="modal">
             <div className="content">
                 <button className="close-btn" type="button" onClick={close}>
-<span className="material-symbols-outlined">
-close
-</span>
+                    <span className="material-symbols-outlined">close</span>
                 </button>
                 <h2>Add Book</h2>
                 <form id="addNewForm" onSubmit={onAddItem}>

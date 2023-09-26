@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 
 import './App.css';
-import AddDialog from "./components/add-dialog";
-import ConfirmDialog from "./components/confirm-dialog";
+import AddDialog from "./components/AddDialog";
+import ConfirmDialog from "./components/ConfirmDialog";
+import Header from "./components/Header";
 
 const Action = {
     CREATE: 'CREATE',
@@ -14,7 +15,6 @@ const limit = 5;
 let action, selectedItem;
 
 function App() {
-    const [darkMode, setDarkMode] = React.useState(false);
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [data, setData] = React.useState([]);
     const [searchKey, setSearchKey] = React.useState('');
@@ -22,8 +22,13 @@ function App() {
     const [total, setTotal] = React.useState(0);
 
     useEffect(() => {
-        const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]');
-        setData(bookList);
+        try {
+            const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]');
+            setData(bookList);
+        } catch (e) {
+            console.error('Cannot fetch data', e);
+            throw e;
+        }
     }, []);
 
     useEffect(() => {
@@ -52,7 +57,12 @@ function App() {
     }
 
     function updateData(data) {
-        localStorage.setItem(dataKey, JSON.stringify(data));
+        try {
+            localStorage.setItem(dataKey, JSON.stringify(data));
+        } catch (e) {
+            console.error('Cannot update data', e);
+            throw e;
+        }
         setData(data);
         setPage(0);
     }
@@ -75,7 +85,7 @@ function App() {
     }
 
     function filterData() {
-       return data.filter(i => i.name.toLowerCase().includes(searchKey.toLowerCase()));
+        return data.filter(i => i.name.toLowerCase().includes(searchKey.toLowerCase()));
     }
 
     function calculatePages() {
@@ -102,34 +112,9 @@ function App() {
         });
     }
 
-    function toggleDarkMode() {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle('dark');
-    }
-
     return (
         <div className={"App"}>
-            <header>
-
-                <a className="brand-name">
-                    <h1>Bookstore</h1>
-                </a>
-
-                <div className="profile">
-                    <div className='dark-mode-toggle'>
-                        <div className={`toggle-switch ${darkMode ? 'on' : 'off'}`}
-                             onClick={() => toggleDarkMode()}>
-                            <div className="slider"></div>
-                        </div>
-                        <span>{`${darkMode ? 'Light' : 'Dark'}`} Mode</span>
-                    </div>
-                    <span className="material-symbols-outlined">
-account_circle
-</span>
-                    <span>Leo Tran</span>
-                </div>
-
-            </header>
+            <Header/>
             <main>
                 <div className="container">
                     <section className="toolbar">
@@ -140,13 +125,15 @@ account_circle
                         </button>
                     </section>
                     <table className="main-content">
-                        <tbody>
+                        <thead>
                         <tr>
                             <th colSpan={2}>Name</th>
                             <th>Author</th>
                             <th>Topic</th>
                             <th>Action</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         {renderItems()}
                         </tbody>
                     </table>
