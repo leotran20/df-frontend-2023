@@ -24,7 +24,7 @@ const Header = () => {
             <div className="slider" />
           </button>
           <span>
-            {`${darkMode ? 'Light' : 'Dark'}`}
+            {`${darkMode ? 'Light' : 'Dark'} `}
             Mode
           </span>
         </div>
