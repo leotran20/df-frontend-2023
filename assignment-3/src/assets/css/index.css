@@ -1,0 +1,193 @@
+@import "variables.css";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    background: var(--secondary-color-3);
+    color: var(--black-color);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color-2);
+    box-shadow: 1px 2px var(--secondary-color-4);
+    padding: .5rem 1rem;
+    margin-bottom: .5rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+h2 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+table, th, td {
+    border: 1px solid var(--secondary-color-1);
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: var(--secondary-color);
+    padding: .3rem .8rem;
+    height: 43px;
+}
+
+input, select {
+    padding: .5rem;
+    border: 1px solid #d1d9df;
+    border-radius: 4px;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1;
+    background-color: var(--secondary-color);
+    color: var(--black-color);
+}
+
+.btn {
+    padding: .7rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #faecee;
+}
+
+.btn-secondary {
+    background-color: transparent;
+}
+
+.btn-link {
+    background-color: transparent;
+}
+
+.btn-link span {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+    border: none;
+    padding: 0 .2rem;
+}
+
+.btn-link:hover span {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.brand-name {
+    align-self: center;
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal .content {
+    background-color: var(--secondary-color);
+    width: 25%;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--secondary-color-2);
+}
+
+.modal .content .close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: .5rem;
+    padding: 0.1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal .content h3, .modal .content p {
+    text-align: center;
+}
+
+.modal .button-group {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.modal .button-group .btn {
+    min-width: 90px;
+}
+
+#confirm-dialog .content {
+    padding: 1rem 3rem;
+    gap: 1rem
+}
+
+#confirm-dialog .button-group {
+    justify-content: center;
+}
+
+#add-modal .content {
+    align-items: flex-start;
+}
+
+#add-modal form, #add-modal input, #add-modal select {
+    width: 100%;
+}
+
+#add-modal input, #add-modal select {
+    margin-top: 3px;
+}
+
+#add-modal form {
+    margin-top: 2rem;
+}
+
+#add-modal label {
+    font-weight: 600;
+}
+
+#add-modal .button-group {
+    justify-content: flex-end;
+}
